@@ -1,0 +1,32 @@
+{
+  "name": "mango-tree-resort-platform",
+  "version": "1.0.0",
+  "description": "Luxury Resort Management & CRM Platform",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+"scripts": {
+  "build": "npm run build:frontend && npm install --prefix backend && npm run build --prefix backend",
+  "start": "npm start --prefix backend",
+
+  "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+  "dev:backend": "cd backend && npm run dev",
+  "dev:frontend": "cd frontend && npm start",
+  "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+  "build:frontend": "cd frontend && npm install && npm run build && mkdir -p ../backend/public && rm -rf ../backend/public/static ../backend/public/index.html ../backend/public/asset-manifest.json ../backend/public/manifest.json ../backend/public/favicon.ico ../backend/public/robots.txt && cp -R build/* ../backend/public/",
+  "db:seed": "cd backend && npm run db:seed",
+  "db:studio": "cd backend && npm run db:studio"
+},
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.18.1",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
+    "qrcode.react": "^4.2.0",
+    "xlsx": "^0.18.5"
+  }
+}

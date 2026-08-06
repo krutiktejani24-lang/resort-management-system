@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply text-gray-800 bg-white;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-resort-600 hover:bg-resort-700 text-white font-medium px-6 py-3 rounded-none transition-all duration-300 tracking-widest text-sm uppercase;
+  }
+  .btn-outline {
+    @apply border border-resort-600 text-resort-600 hover:bg-resort-600 hover:text-white font-medium px-6 py-3 rounded-none transition-all duration-300 tracking-widest text-sm uppercase;
+  }
+  .btn-gold {
+    @apply bg-gold-500 hover:bg-gold-600 text-white font-medium px-6 py-3 rounded-none transition-all duration-300 tracking-widest text-sm uppercase shadow-gold;
+  }
+  .btn-ghost {
+    @apply text-resort-600 hover:text-resort-800 font-medium transition-colors duration-200;
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight;
+  }
+  .section-subtitle {
+    @apply text-resort-600 text-sm font-medium tracking-widest uppercase mb-3;
+  }
+  .section-desc {
+    @apply text-gray-600 text-lg leading-relaxed max-w-2xl;
+  }
+
+.card-luxury {
+  @apply bg-white shadow-resort hover:shadow-resort-lg transition-all duration-300;
+}
+  .input-field {
+    @apply w-full border border-gray-200 px-4 py-3 text-gray-800 focus:outline-none focus:border-resort-500 transition-colors text-sm;
+  }
+  .label-field {
+    @apply block text-xs font-medium text-gray-500 uppercase tracking-widest mb-1;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium tracking-wider hover:text-resort-600 transition-colors duration-200;
+  }
+  .divider-gold {
+    @apply w-16 h-0.5 bg-gold-500 mx-auto my-4;
+  }
+  .divider-green {
+    @apply w-16 h-0.5 bg-resort-500 my-4;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium tracking-widest uppercase;
+  }
+  .badge-green { @apply badge bg-resort-50 text-resort-700; }
+  .badge-gold { @apply badge bg-yellow-50 text-yellow-700; }
+  .badge-red { @apply badge bg-red-50 text-red-700; }
+  .badge-gray { @apply badge bg-gray-100 text-gray-600; }
+  .badge-purple { @apply badge bg-purple-50 text-purple-700; }
+
+  .stat-card {
+    @apply bg-white p-6 border border-gray-100 shadow-sm hover:shadow-resort transition-all duration-300;
+  }
+
+  .table-resort thead { @apply bg-gray-50; }
+  .table-resort th { @apply px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-widest; }
+  .table-resort td { @apply px-6 py-4 text-sm text-gray-700 border-b border-gray-50; }
+  .table-resort tr { @apply hover:bg-resort-50 transition-colors; }
+}
+
+@layer utilities {
+  .text-resort-gradient {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .bg-resort-gradient {
+    background: linear-gradient(135deg, #0a2e1a 0%, #166534 50%, #15803d 100%);
+  }
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .hero-text-shadow { text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5); }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+}
+
+/* Custom Swiper styles */
+.swiper-pagination-bullet-active { background: #16a34a !important; }
+.swiper-button-next, .swiper-button-prev {
+  color: #16a34a !important;
+  background: rgba(255,255,255,0.9);
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 0;
+}
+.swiper-button-next:after, .swiper-button-prev:after { font-size: 16px !important; }
+
+/* React datepicker */
+.react-datepicker-wrapper { width: 100%; }
+.react-datepicker__input-container input { @apply input-field; }
+.react-datepicker { border: 1px solid #e5e7eb !important; border-radius: 0 !important; }
+.react-datepicker__header { background: #166534 !important; border-bottom: none !important; }
+.react-datepicker__current-month, .react-datepicker__day-name { color: white !important; }
+.react-datepicker__day--selected { background: #16a34a !important; border-radius: 0 !important; }
+.react-datepicker__day:hover { background: #dcfce7 !important; border-radius: 0 !important; }
+
+/* Page transitions */
+.page-enter { opacity: 0; transform: translateY(10px); }
+.page-enter-active { opacity: 1; transform: translateY(0); transition: opacity 300ms, transform 300ms; }
+.page-exit { opacity: 1; }
+.page-exit-active { opacity: 0; transition: opacity 200ms; }
