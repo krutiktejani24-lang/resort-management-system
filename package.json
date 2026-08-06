@@ -8,22 +8,13 @@
     "backend"
   ],
 "scripts": {
-<<<<<<< HEAD
   "build": "npm run build:frontend && npm install --prefix backend && npm run build --prefix backend",
-=======
-  "build": "npm install --prefix backend && npm run build --prefix backend",
->>>>>>> ecee04124cf45efe01ef36b44e06c1260821f317
   "start": "npm start --prefix backend",
-
   "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
   "dev:backend": "cd backend && npm run dev",
   "dev:frontend": "cd frontend && npm start",
   "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
-<<<<<<< HEAD
   "build:frontend": "cd frontend && npm install && npm run build && mkdir -p ../backend/public && rm -rf ../backend/public/static ../backend/public/index.html ../backend/public/asset-manifest.json ../backend/public/manifest.json ../backend/public/favicon.ico ../backend/public/robots.txt && cp -R build/* ../backend/public/",
-=======
-  "build:frontend": "cd frontend && npm install && npm run build && rm -rf ../backend/public && mkdir -p ../backend/public && cp -R build/* ../backend/public/",
->>>>>>> ecee04124cf45efe01ef36b44e06c1260821f317
   "db:seed": "cd backend && npm run db:seed",
   "db:studio": "cd backend && npm run db:studio"
 },
