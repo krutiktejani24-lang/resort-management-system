@@ -92,9 +92,13 @@ app.use('/api/transactions', transactionRoutes);
 app.use('/api/invoices', invoiceRoutes);
 
 // Static Files
+// Static Files
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.use("/logo", express.static(path.join(__dirname, "../public/logo")));
 app.use("/invoices", express.static(path.join(__dirname, "../public/invoices")));
+
+// API Error Handler
+app.use(errorHandler);
 
 // React Build
 const clientBuildPath = path.join(__dirname, "../public");
@@ -112,9 +116,6 @@ if (fs.existsSync(clientBuildPath)) {
     res.sendFile(path.join(clientBuildPath, "index.html"));
   });
 }
-
-// Error Handler
-app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`🌴 Resort API running on port ${PORT}`);
