@@ -4,9 +4,13 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
-import path from 'path';
+import path from "path";
+import fs from "fs";
+import { fileURLToPath } from "url";
 
 dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 console.log("ENV FILE TEST");
 console.log("RAZORPAY_KEY_ID =", process.env.RAZORPAY_KEY_ID);
 console.log("PORT =", process.env.PORT);
@@ -88,19 +92,29 @@ app.use('/api/transactions', transactionRoutes);
 app.use('/api/invoices', invoiceRoutes);
 
 // Static Files
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
-app.use('/logo', express.static(path.join(process.cwd(), 'public/logo')));
-app.use('/invoices', express.static(path.join(process.cwd(), 'public/invoices')));
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+app.use("/logo", express.static(path.join(__dirname, "../public/logo")));
+app.use("/invoices", express.static(path.join(__dirname, "../public/invoices")));
+
+// React Build
+const clientBuildPath = path.join(__dirname, "../public");
+
+if (fs.existsSync(clientBuildPath)) {
+  app.use(express.static(clientBuildPath));
+
+  app.get("*", (req, res) => {
+    if (req.originalUrl.startsWith("/api")) {
+      return res.status(404).json({
+        error: "API Route not found",
+      });
+    }
+
+    res.sendFile(path.join(clientBuildPath, "index.html"));
+  });
+}
 
 // Error Handler
 app.use(errorHandler);
-
-// 404 (હંમેશા સૌથી છેલ્લે)
-app.use((req, res) => {
-  res.status(404).json({
-    error: 'Route not found',
-  });
-});
 
 app.listen(PORT, () => {
   console.log(`🌴 Resort API running on port ${PORT}`);

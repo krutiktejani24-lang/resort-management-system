@@ -12,7 +12,7 @@
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm start",
     "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "build:frontend": "cd frontend && npm run build",
+    "build:frontend": "cd frontend && npm install && npm run build && rm -rf ../backend/public && mkdir -p ../backend/public && cp -R build/* ../backend/public/",
     "db:seed": "cd backend && npm run db:seed",
     "db:studio": "cd backend && npm run db:studio"
   },
