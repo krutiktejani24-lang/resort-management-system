@@ -5,11 +5,9 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-"dev": "nodemon src/index.js",
-
-  "build": "prisma generate",
-
-  "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "build": "prisma generate",
+    "start": "node src/index.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
@@ -26,7 +24,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "exceljs": "^4.4.0",
-    "express": "^4.18.2",
+    "express": "^4.22.2",
     "express-async-handler": "^1.2.0",
     "express-rate-limit": "^7.1.5",
     "express-validator": "^7.0.1",
